@@ -1,0 +1,221 @@
+Lesson 2
+structs, arrays, slices and maps
+
+* Structs
+A *struct* is a collection of fields.
+
+	struct {
+	    x int
+	    y int32
+	    u float32
+	}
+
+* Struct declaration
+
+.play struct_type.go
+
+* Struct init
+
+.play struct_init.go
+
+* Struct Declaration implicit
+
+.play struct_declaration_implicit.go
+
+* Struct selector
+
+.play struct_declaration_selector.go
+
+* Struct reinit
+
+.play struct_declaration_redeclare.go
+
+* Struct embedded field
+
+.play struct_declaration_embeded.go
+
+* Struct anonymous declaration
+
+.play struct_declaration_anonymous.go
+
+* Struct anonymous declaration and init
+
+.play struct_declaration_anonymous_init.go
+
+* Empty struct
+	struct {}
+
+.play struct_empty.go
+
+* Pointers
+
+.play pointers.go
+
+* Pointers memory
+
+.image pointers.png 550 1000
+
+* Pointers function
+
+.play pointers_func_copy.go
+
+* Pointers function
+
+.play pointers_func_pointer.go
+
+* Arrays
+
+* Arrays
+
+	var a [10]int
+
+The type *[n]T* is an array of *n* values of type *T*.
+
+* Arrays declare
+
+.play arrays_declare.go
+.image arrays_memory.png 260 530
+
+* Arrays declare and init
+
+.play arrays_init.go
+
+* Arrays for loop
+
+.play arrays_for_range.go
+
+* Arrays value semantic
+
+.play arrays_for_range_value.go
+
+* Arrays pointer semantic
+
+.play arrays_for_range_pointer.go
+
+* Arrays for loop
+
+.play arrays_for_loop.go
+
+* Slices
+
+* Slices
+Array:
+
+    [3]int{44,23,55}
+Slice:
+
+	[]int{44,23,55}
+
+* Slices from array
+.play slices_from_array.go
+
+* Slices range from to
+.play slices_cut_elements.go
+
+* Slices make init
+.play slices_make_init.go
+
+* Slices make init
+.play slices_make_init_values.go
+
+* Slices under the hood
+	foo = make([]int, 5)
+
+	foo = make([]int, 3, 5)
+.image slices_under_the_hood1.png 300 800
+
+* Slice empty
+	var foo []int
+
+.image empty_slice.png 300 600
+
+* Slice under the hood
+	foo = make([]int, 5)
+    foo[3] = 42
+    foo[4] = 100
+
+.image slices_under_the_hood2.png 300 600
+
+* Slice under the hood
+
+.play slices_under_the_hood.go
+
+* Slice under the hood
+	foo = make([]int, 5)
+	foo[3] = 42
+	foo[4] = 100
+
+	bar  := foo[1:4]
+	bar[1] = 99
+
+.image slices_under_the_hood3.png 300 700
+
+* Slice under the hood
+
+.play slices_under_the_hood2.go
+
+* Slice append
+
+	func append(s []T, vs ...T) []T
+
+.play slice_append_simple.go
+
+* Slice append
+
+	a := make([]int, 32)
+    a = append(a, 1)
+
+.image slice_under_the_hood4.png 300 700
+
+* Slice append cap
+
+.play slice_append_cap.go
+
+* Slice append in func
+
+.play slice_append_in_func.go
+
+* Slice append share data
+
+.play slice_append_in_func_share.go
+
+* Slice for range
+
+.play slice_for_range.go
+
+* Slice copy
+
+.play slice_copy.go
+
+* Maps
+
+* Maps declare
+	m := make(map[string]int)
+
+* Maps add key/value
+
+.play map_add_value.go
+
+* Maps iterate
+
+.play map_iterate.go
+
+* Maps key iterate
+
+.play map_key_iterate.go
+
+* Maps value iterate
+
+.play map_value_iterate.go
+
+* Maps delete
+
+.play map_delete.go
+
+* Maps find value by key
+
+.play map_find.go
+
+* Maps in function
+
+.play map_and_function.go
