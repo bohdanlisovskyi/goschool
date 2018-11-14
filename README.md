@@ -8,4 +8,4 @@ https://talks.godoc.org/github.com/bohdanlisovskyi/goschool/lesson2/presentation
 https://talks.godoc.org/github.com/bohdanlisovskyi/goschool/lesson4/presentation/lesson4.slide
 
 **Lesson5**
-https://talks.godoc.org/github.com/bohdanlisovskyi/goschool/lesson4/presentation/lesson5.slide
+https://talks.godoc.org/github.com/bohdanlisovskyi/goschool/lesson5/presentation/lesson5.slide
