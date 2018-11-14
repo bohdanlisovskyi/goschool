@@ -6,3 +6,6 @@ https://talks.godoc.org/github.com/bohdanlisovskyi/goschool/lesson2/presentation
 
 **Lesson4**
 https://talks.godoc.org/github.com/bohdanlisovskyi/goschool/lesson4/presentation/lesson4.slide
+
+**Lesson5**
+https://talks.godoc.org/github.com/bohdanlisovskyi/goschool/lesson4/presentation/lesson5.slide
