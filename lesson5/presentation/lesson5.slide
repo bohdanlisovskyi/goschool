@@ -1,0 +1,372 @@
+Lesson 5
+The Core Packages. Part 1
+
+* fmt
+
+* func Print
+	func Print(a ...interface{}) (n int, err error)
+.play fmt.print.go
+
+* func Printf
+	func Printf(format string, a ...interface{}) (n int, err error)
+.play fmt.printf.go
+
+* Formats Default
+	bool:                    %t
+	int, int8 etc.:          %d
+	uint, uint8 etc.:        %d, %#x if printed with %#v
+	float32, complex64, etc: %g
+	string:                  %s
+	chan:                    %p
+	pointer:                 %p
+	%v	the value in a default format when printing structs, the plus flag (%+v) adds field names
+	%#v	a Go-syntax representation of the value
+	%T	a Go-syntax representation of the type of the value
+
+* Printf
+.play fmt.printf-examples.go
+
+* func Println
+	func Println(a ...interface{}) (n int, err error)
+.play fmt.println.go
+
+* func Sprint, func Sprintf, func Sprinln
+	func Sprint(a ...interface{}) string
+
+	func Sprintf(format string, a ...interface{}) string
+
+	func Sprintln(a ...interface{}) string
+.play fmt.sprint.go
+
+* func Fprint, func Fprintf, func Fprinln
+	func Fprint(w io.Writer, a ...interface{}) (n int, err error)
+
+	func Fprintf(w io.Writer, format string, a ...interface{}) (n int, err error)
+
+	func Fprintln(w io.Writer, a ...interface{}) (n int, err error)
+.play fmt.sprint.go
+
+* func Errorf
+	func Errorf(format string, a ...interface{}) error
+.play fmt.errorf.go
+
+* strings
+
+* Compare
+	func Compare(a, b string) int
+
+	0 if a==b, -1 if a < b, and +1 if a > b
+.play strings.compare.go
+
+* Contains
+	func Contains(s, substr string) bool
+
+.play strings.contain.go
+
+* Count
+	func Count(s, sep string) int
+
+.play strings.count.go
+
+* EqualFold
+	func EqualFold(s, t string) bool
+
+.play strings.equal-fold.go
+
+* Fields
+	func Fields(s string) []string
+
+.play strings.fields.go
+
+* HasPrefix
+	func HasPrefix(s, prefix string) bool
+
+.play strings.hasprefix.go
+
+* HasSuffix
+	func HasSuffix(s, prefix string) bool
+
+.play strings.hassuffix.go
+
+* Index
+	func Index(s, sep string) int
+
+.play strings.index.go
+
+* Join
+	func Join(stringSlice []string, sep string) string
+
+.play strings.join.go
+
+* LastIndex
+	func LastIndex(s, sep string) int
+
+.play strings.lastindex.go
+
+* Repeat
+	func Repeat(s string, count int) string
+
+.play strings.repeat.go
+
+* Replace
+	func Replace(s, old, new string, n int) string
+
+.play strings.replace.go
+
+* Split
+	func Split(S string, sep string) []string
+
+.play strings.split.go
+
+* SplitN
+	func SplitN(s, sep string, n int) []string
+
+.play strings.splitn.go
+
+* Title
+	func Title(s string) string
+
+.play strings.title.go
+
+* ToLower
+	func ToLower(s string) string
+
+.play strings.tolower.go
+
+* ToUpper
+	func ToUpper(s string) string
+
+.play strings.toupper.go
+
+* TrimLeft
+	func TrimLeft(s string, cutset string) string
+
+.play strings.trimleft.go
+
+* TrimRight
+	func TrimRight(s string, cutset string) string
+
+.play strings.TrimRight.go
+
+* os
+
+* Chmod
+	func Chmod(name string, mode FileMode) error
+
+* Chown
+	func Chown(name string, uid, gid int) error
+
+* Clearenv
+	func Clearenv()
+Clearenv deletes all environment variables.
+
+* Exit
+	func Exit(code int)
+.play os.exit.go
+
+* Getenv
+	func Getenv(key string) string
+.play os.getenv.go
+
+* Getpid
+	func Getpid() int
+.play os.getpid.go
+
+* Mkdir
+	func Mkdir(name string, perm FileMode) error
+
+* MkdirAll
+	func MkdirAll(path string, perm FileMode) error
+
+* Remove
+	func Remove(name string) error
+
+* Rename
+	func Rename(oldpath, newpath string) error
+
+* Setenv
+	func Setenv(key, value string) error
+
+* type File
+
+* Create
+	func Create(name string) (*File, error)
+
+* Open
+	func Open(name string) (*File, error)
+
+* OpenFile
+	func OpenFile(name string, flag int, perm FileMode) (*File, error)
+.play os.openfile.go
+
+* (*File) Chmod
+	func (f *File) Chmod(mode FileMode) error
+.play os.chmod.go
+
+* (*File) Chown
+	func (f *File) Chown(uid, gid int) error
+
+* (*File) Close
+	func (f *File) Close() error
+
+* (*File) Name
+	func (f *File) Name() string
+
+* (*File) Read
+	func (f *File) Read(b []byte) (n int, err error)
+.play os.read.go
+
+* (*File) Readdirnames
+	func (f *File) Readdirnames(n int) (names []string, err error)
+.play os.readdirnames.go
+
+* (*File) Stat
+	func (f *File) Stat() (FileInfo, error)
+
+	type FileInfo interface {
+		Name() string       // base name of the file
+		Size() int64        // length in bytes for regular files; system-dependent for others
+		Mode() FileMode     // file mode bits
+		ModTime() time.Time // modification time
+		IsDir() bool        // abbreviation for Mode().IsDir()
+		Sys() interface{}   // underlying data source (can return nil)
+	}
+
+* (*File) Stat
+.play os.filestat.go
+
+* (*File) Write
+	func (f *File) Write(b []byte) (n int, err error)
+
+* Stat
+.play os.stat.go
+
+* time
+
+* After
+	func After(d Duration) <-chan Time
+.play time.after.go
+
+* Sleep
+	func Sleep(d Duration)
+.play time.sleep.go
+
+* NewTicker
+	func NewTicker(d Duration) *Ticker
+
+	type Ticker struct {
+		C <-chan Time // The channel on which the ticks are delivered.
+		// contains filtered or unexported fields
+	}
+
+* NewTicker
+.play time.ticker.go
+
+* Date
+	func Date(year int, month Month, day, hour, min, sec, nsec int, loc *Location) Time
+.play time.date.go
+
+* Now
+	func Now() Time
+.play time.now.go
+
+* (Time) Add
+	func (t Time) Add(d Duration) Time
+.play time.add.go
+
+* (Time) AddDate
+	func (t Time) AddDate(years int, months int, days int) Time
+.play time.adddate.go
+
+* (Time) After
+	func (t Time) After(u Time) bool
+.play time.t.after.go
+
+* (Time) Before
+	func (t Time) Before(u Time) bool
+.play time.t.before.go
+
+* (Time) Format
+	func (t Time) Format(layout string) string
+.play time.t.format.go
+
+* (Time) Sub
+	func (t Time) Sub(u Time) Duration
+.play time.sub.go
+
+* Time
+.play time.t.format.go
+
+* json
+
+* Marshal
+	func Marshal(v interface{}) ([]byte, error)
+.play json.marshal.go
+
+* Marshal
+.play json.marshal.types.go
+
+* Marshal string
+.play json.marshal.string.go
+
+* Marshal array
+.play json.marshal.array.go
+
+* Marshal
+.play json.marshal.unexported.go
+
+* Marshal tag
+.play json.marshal.tag.go
+
+* Marshal omitempty tag
+.play json.marshal.omitempty.go
+
+* Marshal omitempty tag
+.play json.marshal.comma.omitempty.go
+
+* Marshal ignored tag
+.play json.marshal.dash.key.go
+
+* Marshal
+.play json.marshal.string.value.go
+
+* Unmarshal
+	func Unmarshal(data []byte, v interface{}) error
+
+* Unmarshal struct
+.play json.unmarshal.go
+
+* Unmarshal slice
+.play json.unmarshal.slice.go
+
+* Decoder
+	func NewDecoder(r io.Reader) *Decoder
+
+* Decoder
+.play json.decoder.go
+
+* Encoder
+	func NewEncoder(w io.Writer) *Encoder
+
+* flag
+	Define flags using flag.String(), Bool(), Int(), etc.
+
+* flag
+	func String(name string, value string, usage string) *string
+
+	func Int(name string, value int, usage string) *int
+
+	func Bool(name string, value bool, usage string) *bool
+	...
+
+* flag
+	func StringVar(p *string, name string, value string, usage string)
+
+	func IntVar(p *int, name string, value int, usage string)
+	...
+
+* flag Parse
+	func Parse()
+
+* flag
+.play flag.go
