@@ -146,7 +146,7 @@ The Core Packages. Part 1
 * TrimRight
 	func TrimRight(s string, cutset string) string
 
-.play strings.TrimRight.go
+.play strings.trimright.go
 
 * os
 
